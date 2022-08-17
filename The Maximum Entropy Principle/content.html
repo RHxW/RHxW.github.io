@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>content.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<script src="../mathjax/es5/tex-chtml.js" id="MathJax-script" async></script>
+<script>
+	MathJax = {
+	  tex: {
+		inlineMath: [['$', '$'], ['\\(', '\\)']]
+	  },
+	  svg: {
+		fontCache: 'global'
+	  }
+	};
+</script>
+
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="the-maximum-entropy-principle">The Maximum Entropy Principle</h1>
+<h2 id="information-entropy">Information Entropy</h2>
+<p>根据PRML：
+考虑离散随机变量$x$, 我们想要知道当观察到这个随机变量的一个具体值的时候获取的信息有多少。信息的量可以看作学习$x$值的‘惊讶度(degree of surprise)’。
+信息量的衡量方法基于概率分布$p(x)$, 因此要寻找一个根据$p(x)$单调的量$h(x)$来表示信息量。注意$h(\cdot)$的形式，假如有两个不相关的事件$x,y$, 那么同时观察二者得到的信息量和分别观察它们得到的信息量应该是相同的，也就是说$h(x+y)=h(x)+h(y)$. 而两个不相关的事件在统计上是相互独立的，因此$p(x,y)=p(x)p(y)$. 那么可得：</p>
+<p>$$
+\begin{equation}
+h(x)=-\log_2p(x)
+\end{equation}
+$$</p>
+<p>即概率低的事件具有更高的信息量。上式中的对数底数为2，因为$h(x)$最常见的单位是比特（二进制）</p>
+<p>平均信息量称为熵，是上式的期望：</p>
+<p>$$
+\begin{equation}
+\text{H}[x]=-\sum_xp(x)\log_2p(x)
+\end{equation}
+$$</p>
+<p>有$\lim_{p\rightarrow 0}p\ln p$</p>
+<p>非均匀分布的熵比均匀分布要小一些</p>
+<p>离散形式：</p>
+<p>$$
+\begin{equation}
+\text{H}[x]=-\sum_{x}^np(x)\log_np(x)
+\end{equation}
+$$</p>
+<p>连续形式：</p>
+<p>$$
+\begin{equation}
+\text{H}[\textbf{x}]=-\int p(\textbf{x})\ln p(\textbf{x}) \text{d}\textbf{x}
+\end{equation}
+$$</p>
+<p>log如果以2为底数的话，信息熵的单位就是比特（bit），以e为底数的话，信息熵的单位就是奈特（nat），以10为底数的话，单位就是哈特（hat）</p>
+<h2 id="the-maximum-entropy-principle">The Maximum Entropy Principle</h2>
+<p>最大熵原理的内容：在有明确先验数据或可测试信息的前提下，最能够准确描述一个系统当前状态的概率分布是熵最大的那个
+另一种说法：获取了一个概率分布的明确的先验数据或者可测试信息。在所有能够对先验数据进行编码的可能的概率分布中，信息熵最大的那个是最佳选择。</p>
+<p>由于最大熵的分布是对真实分布数据作最少假设的分布，因此最大熵原理可以视为奥卡姆剃刀的一个具体应用。</p>
+<blockquote>
+<p>The principle of maximum entropy states that the probability distribution which best represents the current state of knowledge about a system is the one with largest entropy, in the context of precisely stated prior data (such as a proposition that expresses testable information).
+Another way of stating this: Take precisely stated prior data or testable information about a probability distribution function. Consider the set of all trial probability distributions that would encode the prior data. According to this principle, the distribution with maximal information entropy is the best choice.
+Since the distribution with the maximum entropy is the one that makes the fewest assumptions about the true distribution of data, the principle of maximum entropy can be seen as an application of Occam's razor.</p>
+</blockquote>
+<p>摘自wikipedia</p>
+<p>说白了，就是要保留全部的不确定性，将风险降到最小。</p>
+<h2 id="which-distribution-has-the-highest-information-entropy">Which Distribution has the Highest Information Entropy</h2>
+<h3 id="discret-variable">Discret Variable</h3>
+<p>设$p(x)$是离散变量$x$的概率分布函数，$x$可取值的个数为$n$，则其信息熵可表示为：</p>
+<p>$$
+\begin{equation}
+\text{H}[x]=-\sum_{i=1}^n p(x_i)\log_np(x_i)
+\end{equation}
+$$</p>
+<p>求上式极值相当于多元函数求极值，即对每个自变量求偏导数：</p>
+<p>$$
+\begin{equation}
+\frac{\partial H}{\partial x_i}=-\log x_i -1
+\end{equation}
+$$
+令偏导数为0可得$x_i=n^{-1}=\frac{1}{n}$, 即随机变量x满足均匀分布，因此均匀分布是离散型随机变量的最大熵分布。</p>
+<h3 id="continuous-variable">Continuous Variable</h3>
+<p>设$f(x)$为所求的概率分布的概率密度函数，那么这个分布的信息熵就表示为：</p>
+<p>$$
+\begin{equation}
+H(f(x))=-\int_{-\infty}^{+\infty}f(x)\ln f(x)\text{d}x
+\end{equation}
+$$</p>
+<p>因为$f(x)$是一个概率密度函数，所以它有以下三个性质（边界条件）：</p>
+<p>$$
+\begin{align}
+\int_{-\infty}^{+\infty}f(x)\text{d}x&amp;=1 \\
+\int_{-\infty}^{+\infty}f(x)x \text{d}x&amp;=\mu \\
+\int_{-\infty}^{+\infty}f(x)(x-\mu)^2\text{d}x&amp;=\sigma^2
+\end{align}
+$$</p>
+<p>其中$\mu, \sigma^2$分别为该分布的期望和方差</p>
+<p>分别对三个边界条件引入三个拉格朗日系数($\alpha,\beta,\lambda$)，构造拉格朗日函数：</p>
+<p>$$
+\begin{align}
+I(x)&amp;=H(f(x))+\alpha \int_{-\infty}^{+\infty}f(x)\text{d}x + \beta \int_{-\infty}^{+\infty}f(x)x \text{d}x + \lambda \int_{-\infty}^{+\infty}f(x)(x-\mu)^2\text{d}x \\
+&amp;= -\int_{-\infty}^{+\infty}f(x)\ln f(x)\text{d}x +\alpha \int_{-\infty}^{+\infty}f(x)\text{d}x + \beta \int_{-\infty}^{+\infty}f(x)x \text{d}x + \lambda \int_{-\infty}^{+\infty}f(x)(x-\mu)^2\text{d}x \\
+&amp;= -\int_{-\infty}^{+\infty}\Big[f(x)\ln f(x)-\alpha f(x) - \beta f(x)x - \lambda f(x)(x-\mu)^2\Big] \text{d}x
+\end{align}
+$$</p>
+<p>令被积函数为$F(f(x),x)$有：</p>
+<p>$$
+\begin{equation}
+F(f(x),x)=f(x)\ln f(x)-\alpha f(x) - \beta f(x)x - \lambda f(x)(x-\mu)^2
+\end{equation}
+$$</p>
+<p>其中$F$为泛函</p>
+<p>若$\delta I=0$则$\frac{\partial F}{\partial f(x)}=0$，有：</p>
+<p>$$
+\begin{align}
+\ln f(x)+1-\alpha-\beta x - \lambda (x-\mu)^2=0 \\
+\ln f(x)=\alpha+\beta x + \lambda (x-\mu)^2-1 \\
+f(x)=e^{\alpha+\beta x + \lambda (x-\mu)^2-1} \\
+=e^{\alpha -1}e^{\beta x + \lambda (x-\mu)^2}
+\end{align}
+$$</p>
+<p>其中</p>
+<p>$$
+\begin{equation}
+\beta x + \lambda (x-\mu)^2=\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2+(\frac{\beta}{\lambda}-\frac{\beta^2}{4\lambda^2})
+\end{equation}
+$$</p>
+<p>所以</p>
+<p>$$
+\begin{align}
+f(x)&amp;=e^{\alpha -1} \cdot e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2} \cdot e^{\frac{\beta}{\lambda}-\frac{\beta^2}{4\lambda^2}} \\
+&amp;=e^{\alpha -1+\frac{\beta}{\lambda}-\frac{\beta^2}{4\lambda^2}} \cdot e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}
+\end{align}
+$$</p>
+<p>因为等号右边的前一项与$x$无关（是常数），将其令成$C$，得到：</p>
+<p>$$
+\begin{equation}
+f(x)=Ce^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}
+\end{equation}
+$$</p>
+<p>上式即为所求分布的概率密度函数形式，其中有三个待定系数：$C, \beta, \lambda$, 可以根据概率密度函数的三个边界条件来确定：</p>
+<ol>
+<li>
+<p>第一个边界条件：</p>
+<p>$$
+\begin{align}
+\int_{-\infty}^{+\infty}f(x)\text{d}x
+&amp;= C\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}\text{d}x \\
+&amp;= C\int_{-\infty}^{+\infty}e^{\lambda x^2}\text{d}x \\
+&amp;= C\int_{-\infty}^{+\infty}e^{-(\sqrt{-\lambda}x)^2}\text{d}x \\
+&amp;= \frac{C}{\sqrt{-\lambda}}\int_{-\infty}^{+\infty}e^{-(\sqrt{-\lambda}x)^2}\text{d}(\sqrt{-\lambda}x) \\
+&amp;=\frac{C}{\sqrt{-\lambda}}\int_{-\infty}^{+\infty}e^{-u^2}\text{d}u \\
+&amp;=\frac{C}{\sqrt{-\lambda}}\sqrt{\pi}=1
+\end{align}
+$$</p>
+<p>可得$C=\frac{\sqrt{-\lambda}}{\sqrt{\pi}}$
+则</p>
+<p>$$
+\begin{equation}
+f(x)=\frac{\sqrt{-\lambda}}{\sqrt{\pi}}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}
+\end{equation}
+$$</p>
+<p>上述积分计算中用到了结论：</p>
+<p>$$
+\begin{equation}
+\int_{-\infty}^{+\infty}e^{-x^2}\text{d}x=\sqrt{\pi}
+\end{equation}
+$$</p>
+<p>具体可使用二重积分转换极坐标进行计算：</p>
+<p>令</p>
+<p>$$
+\begin{equation}
+\quad I=\int_{-\infty}^{+\infty}e^{-x^2}\text{d}x
+\end{equation}
+$$</p>
+<p>那么因为积分值与积分变量无关，有</p>
+<p>$$
+\begin{align}
+I^2&amp;=\int_{-\infty}^{+\infty}e^{-x^2}\text{d}x \int_{-\infty}^{+\infty}e^{-y^2}\text{d}y \\
+&amp;= \iint e^{-(x^2+y^2)}\text{d}x\text{d}y \\
+&amp;=\int_{0}^{2\pi}\text{d}\theta \int_{0}^{+\infty}e^{-r^2}r\text{d}r \\
+&amp;=-\frac{1}{2}\cdot 2\pi\cdot e^{-r^2}|_{-\infty}^{+\infty} \\
+&amp;=-\frac{1}{2}\cdot 2\pi\cdot(0-1) \\
+&amp;= \pi
+\end{align}
+$$</p>
+<p>得到$I=\sqrt{\pi}$</p>
+</li>
+<li>
+<p>第二个边界条件：</p>
+<p>$$
+\begin{align}
+\int_{-\infty}^{+\infty}f(x)x \text{d}x
+&amp;=\frac{\sqrt{-\lambda}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}x\text{d}x \\
+&amp;=\frac{\sqrt{-\lambda}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}[x-(\mu-\frac{\beta}{2\lambda})+(\mu-\frac{\beta}{2\lambda})]\text{d}x \\
+&amp;=\frac{\sqrt{-\lambda}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}[x-(\mu-\frac{\beta}{2\lambda})]\text{d}x + \frac{\sqrt{-\lambda}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}(\mu-\frac{\beta}{2\lambda})\text{d}x
+\end{align}
+$$</p>
+<p>上式等号右边有两项，分别用A和B来代替，有：</p>
+<p>$$
+\begin{align}
+A&amp;=\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}[x-(\mu-\frac{\beta}{2\lambda})]\text{d}x \\
+&amp;= \sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda u^2}u\text{d}u
+\end{align}
+$$</p>
+<p>因为$e^{\lambda u^2}u$是奇函数，在对称区间上的积分为0，所以$A=0$</p>
+<p>$$
+\begin{align}
+B&amp;=\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda[x-(\mu-\frac{\beta}{2\lambda})]^2}(\mu-\frac{\beta}{2\lambda})\text{d}x \\
+&amp;=\sqrt{\frac{-\lambda}{\pi}}(\mu-\frac{\beta}{2\lambda})\int_{-\infty}^{+\infty}e^{\lambda u^2}\text{d}u \\
+&amp;=\sqrt{\frac{-\lambda}{\pi}}(\mu-\frac{\beta}{2\lambda})\int_{-\infty}^{+\infty}e^{-(\sqrt{-\lambda}u)^2}\text{d}(\sqrt{-\lambda}u) \\
+&amp;=\sqrt{\frac{-\lambda}{\pi}}(\mu-\frac{\beta}{2\lambda})\sqrt{\frac{-\pi}{\lambda}} \\
+&amp;=\mu-\frac{\beta}{2\lambda} \\
+&amp;=\mu
+\end{align}
+$$</p>
+<p>得到$\beta=0$，所以</p>
+<p>$$
+\begin{equation}
+f(x)=\sqrt{\frac{-\lambda}{\pi}}e^{\lambda(x-\mu)^2}
+\end{equation}
+$$</p>
+</li>
+<li>
+<p>第三个边界条件：</p>
+<p>$$
+\begin{align}
+\int_{-\infty}^{+\infty}f(x)(x-\mu)^2\text{d}x
+&amp;=\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda(x-\mu)^2}(x-\mu)^2\text{d}x \\
+&amp;=\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda u^2}u^2\text{d}u \\
+&amp;=\frac{1}{2\lambda}\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda u^2}u\text{d}(\lambda u^2) \\
+&amp;=\frac{1}{2\lambda}\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}u\text{d}(e^{\lambda u^2}) \\
+&amp;=\frac{1}{2\lambda}\sqrt{\frac{-\lambda}{\pi}} \Big[ ue^{\lambda u^2}|{-\infty}^{+\infty} -\int{-\infty}^{+\infty}e^{\lambda u^2}\text{d}u \Big] \\
+&amp;=-\frac{1}{2\lambda}\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{\lambda u^2}\text{d}u \\
+&amp;=-\frac{1}{\sqrt{-\lambda}}\frac{1}{2\lambda}\sqrt{\frac{-\lambda}{\pi}}\int_{-\infty}^{+\infty}e^{-(\sqrt{-\lambda}u)^2}\text{d}(\sqrt{-\lambda}u) \\
+&amp;=-\frac{1}{2\lambda}=\sigma^2
+\end{align}
+$$</p>
+<p>得到$\lambda=-\frac{1}{2\sigma^2}$</p>
+</li>
+</ol>
+<p>整理得到$f(x)$的最终形式：</p>
+<p>$$
+\begin{equation}
+f(x)=\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\end{equation}
+$$</p>
+<p>以上便是根据最大熵原理推导出的自然界中最常见分布的密度函数，也就是高斯分布。</p>
+
+</body>
+</html>
